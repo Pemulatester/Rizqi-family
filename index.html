@@ -195,10 +195,22 @@
         </p>
     </div>
 
-    <audio id="bg-music" autoplay loop>
+    <audio id="bg-music" loop>
     <source src="https://Pemulatester.github.io/Rizqi-family/takbiran.mp3" type="audio/mpeg">
     Browser kamu tidak mendukung audio tag.
 </audio>
+
+<script>
+    document.getElementById("surat").addEventListener("click", function() {
+        document.getElementById("suratContainer").style.display = "block";
+        this.style.display = "none"; // Sembunyikan surat setelah diklik
+        
+        // Putar musik saat surat dibuka
+        const audio = document.getElementById("bg-music");
+        audio.play();
+    });
+</script>
+
 
     <!-- JavaScript -->
     <script>
