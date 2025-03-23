@@ -186,20 +186,15 @@
     document.getElementById("surat").addEventListener("click", function() {
         document.getElementById("suratContainer").style.display = "block";
         this.style.display = "none"; // Sembunyikan surat setelah diklik
-        
+
+        document.getElementById("kabah").classList.add("move-kabah");
+        document.getElementById("masjid").classList.add("move-masjid");
+
         // Putar musik saat surat dibuka
         const audio = document.getElementById("bg-music");
-        audio.play();
+        audio.play().catch(error => console.log("Audio tidak dapat diputar otomatis:", error));
     });
-    <script>
-        document.getElementById("surat").addEventListener("click", function() {
-            document.getElementById("suratContainer").style.display = "block";
-            this.style.display = "none";
-
-            document.getElementById("kabah").classList.add("move-kabah");
-            document.getElementById("masjid").classList.add("move-masjid");
-        });
-    </script>
+</script>
 
 </body>
 </html>
