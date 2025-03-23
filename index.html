@@ -11,7 +11,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Sriracha&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
     <style>
         * {
             margin: 0;
@@ -34,6 +33,20 @@
             overflow: hidden;
         }
 
+        /* Efek Bintang */
+        .bintang {
+            position: absolute;
+            color: #f1c40f;
+            font-size: 20px;
+            animation: blink 1.5s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+
         /* Bulan Sabit */
         .moon {
             font-size: 100px;
@@ -44,26 +57,21 @@
             text-shadow: 0 0 30px rgba(255, 255, 0, 0.9);
         }
 
-        /* Bintang */
-        .stars {
+        /* Ikon Ka'bah */
+        .kabah {
+            font-size: 100px;
             position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .stars span {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px white;
-            width: 7px;
-            height: 7px;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4ac0d;
+            text-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
+            transition: all 1s ease-in-out;
         }
 
         /* Ikon Masjid */
         .masjid {
-            font-size: 150px;
+            font-size: 100px;
             position: absolute;
             bottom: 5%;
             left: 50%;
@@ -71,6 +79,7 @@
             opacity: 0.8;
             color: #f1c40f;
             text-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
+            transition: all 1s ease-in-out;
         }
 
         /* Surat */
@@ -93,24 +102,6 @@
             transform: scale(1.05);
         }
 
-        .surat .header {
-            background-color: #1e8449;
-            padding: 8px;
-            color: white;
-            font-size: 16px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .surat .content {
-            padding: 10px;
-            color: white;
-            font-size: 14px;
-            text-align: center;
-        }
-
         /* Pesan Surat */
         #suratContainer {
             display: none;
@@ -126,54 +117,46 @@
             font-weight: bold;
         }
 
-        /* Ukuran ikon pesan */
-        .icon {
-            font-size: 50px;
-            margin-bottom: 10px;
+        /* Posisi setelah amplop dibuka */
+        .move-kabah {
+            left: 5%;
+            bottom: 5%;
+            top: auto;
+            transform: none;
         }
 
-        /* Responsive untuk HP */
-        @media (max-width: 480px) {
-            .moon {
-                font-size: 70px;
-                top: 5%;
-                left: 10%;
-            }
-            .masjid {
-                font-size: 100px;
-            }
-            .surat {
-                width: 220px;
-                height: 160px;
-            }
-            .surat .content {
-                font-size: 12px;
-            }
-            #suratContainer {
-                font-size: 16px;
-                padding: 15px;
-            }
-            .icon {
-                font-size: 40px;
-            }
+        .move-masjid {
+            right: 5%;
+            bottom: 5%;
+            left: auto;
+            transform: none;
         }
     </style>
 </head>
 <body>
 
+
+
     <!-- Bulan Sabit -->
     <i class="fas fa-moon moon"></i>
 
-    <!-- Tambahkan Bintang -->
-    <div class="stars"></div>
+    <!-- Ikon Ka'bah -->
+    <i class="fas fa-kaaba kabah" id="kabah"></i>
 
     <!-- Ikon Masjid di Latar Belakang -->
-    <i class="fas fa-mosque masjid"></i>
+    <i class="fas fa-mosque masjid" id="masjid"></i>
+
+    <!-- Efek Bintang -->
+    <i class="fas fa-star bintang" style="top: 20%; left: 30%;"></i>
+    <i class="fas fa-star bintang" style="top: 25%; left: 60%;"></i>
+    <i class="fas fa-star bintang" style="top: 50%; left: 10%;"></i>
+    <i class="fas fa-star bintang" style="top: 70%; left: 80%;"></i>
+    <i class="fas fa-star bintang" style="top: 85%; left: 40%;"></i>
 
     <!-- Surat -->
     <div class="surat" id="surat">
         <div class="header">
-            <i class="fas fa-envelope"></i> Surat Spesial
+           
         </div>
         <div class="content">
             <p>Klik untuk membuka pesan ✨</p>
@@ -182,19 +165,18 @@
 
     <!-- Pesan Surat -->
     <div class="container" id="suratContainer">
-        <i class="fas fa-envelope-open-text icon"></i>
+    <i class="fas fa-envelope-open-text icon" style="font-size: 50px; color: #f1c40f;"></i> 
         <p style="font-size: 18px;">Saya Rizqi Ramadhan Mengucapkan</p>
-        <p style="font-size: 18px;">Selamat Hari Raya Idul Fitri 1446 H</p>
+        <p style="font-size: 18px;">Selamat Hari Raya Idul Fitri 1446 H ✨</p>
         <p>
             Taqabbalallahu minna wa minkum. Semoga di hari yang suci ini, kita semua diberi kebahagiaan, 
             kedamaian, serta keberkahan yang tiada henti.
             <br><br>
             Jika ada kata-kata dan perbuatan yang kurang berkenan, kami mohon maaf lahir dan batin.
             <br><br>
-            <b>Minal Aidin wal Faizin, Mohon Maaf Lahir dan Batin</b>.
+            <b>Minal Aidin wal Faizin, Mohon Maaf Lahir dan Batin</b> ✨
         </p>
     </div>
-
     <audio id="bg-music" loop>
     <source src="https://Pemulatester.github.io/Rizqi-family/takbiran.mp3" type="audio/mpeg">
     Browser kamu tidak mendukung audio tag.
@@ -209,24 +191,14 @@
         const audio = document.getElementById("bg-music");
         audio.play();
     });
-</script>
-
-
-    <!-- JavaScript -->
     <script>
         document.getElementById("surat").addEventListener("click", function() {
             document.getElementById("suratContainer").style.display = "block";
-            this.style.display = "none"; // Sembunyikan surat setelah diklik
-        });
+            this.style.display = "none";
 
-        // Tambahkan bintang di langit
-        let stars = document.querySelector('.stars');
-        for (let i = 0; i < 20; i++) {
-            let star = document.createElement('span');
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            stars.appendChild(star);
-        }
+            document.getElementById("kabah").classList.add("move-kabah");
+            document.getElementById("masjid").classList.add("move-masjid");
+        });
     </script>
 
 </body>
